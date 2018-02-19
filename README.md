@@ -3,17 +3,19 @@
 [![NPM Version][npm-img]][npm-url]
 [![Build Status][cli-img]][cli-url]
 
-[Focus Within] lets you target elements based on whether an element is focused
-or contains a focused element, following the [Selectors Level 4 specification].
+[Focus Within] lets target elements based on whether they are focused or contain
+a focused element, following the [Selectors Level 4 specification].
 
-[Focus Within] adds a `focus-within` attribute to any element that is focused
-or contains a focused element.
+[Focus Within] polyfills this behavior by adding a `focus-within` attribute to
+elements matching `:focus-within`.
 
-This can be used to style components specifically if focus is triggered within:
+```css
+.form-field label {
+  /* style a label */
+}
 
-```js
-.my-form-field[focus-within] label {
-  background-color: yellow;
+.form-field[focus-within] label {
+  /* style a label differently when .form-field contains a focused input */
 }
 ```
 
@@ -36,7 +38,8 @@ focusWithin(document);
 ## Options
 
 [Focus Within] accepts a secondary paramater to configure the attribute or
-class name added to elements matching `:focus-within`.
+class name added to elements matching focused elements or containing focused
+elements.
 
 ```js
 focusWithin(document, {
