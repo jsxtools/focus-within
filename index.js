@@ -1,6 +1,14 @@
 export default function focusWithin(document, opts) {
-	const { className = '', attr = 'focus-within' } = Object(opts);
+	const { className = '', attr = 'focus-within', force } = Object(opts);
 	const lastElements = [];
+
+	try {
+		document.querySelector(':focus-within');
+
+		if (!force) {
+			return initialize;
+		}
+	} catch (ignoredError) { /* do nothing */ }
 
 	function onfocuschange() {
 		let lastElement;
@@ -41,8 +49,8 @@ export default function focusWithin(document, opts) {
 	}
 
 	/**
-	 * Callback wrapper for check loaded state
-	 */
+	* Callback wrapper for check loaded state
+	*/
 	/* eslint-disable */
 	!function load() {
 		if (/m/.test(document.readyState)) {
@@ -52,4 +60,6 @@ export default function focusWithin(document, opts) {
 		}
 	}()
 	/* eslint-enable */
+
+	return initialize;
 }
