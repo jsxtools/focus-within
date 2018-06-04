@@ -1,6 +1,6 @@
 {
   "name": "focus-within",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Target elements based on whether an element is focused or contains a focused element",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
