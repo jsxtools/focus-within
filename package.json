@@ -7,11 +7,11 @@
   "repository": "jonathantneal/focus-within",
   "homepage": "https://github.com/jonathantneal/focus-within#readme",
   "bugs": "https://github.com/jonathantneal/focus-within/issues",
-  "main": "index.umd.js",
+  "main": "index.cjs.js",
   "module": "index.es.js",
   "files": [
     "index.es.js",
-    "index.umd.js"
+    "index.cjs.js"
   ],
   "scripts": {
     "prepublishOnly": "npm test",
@@ -25,11 +25,11 @@
   "devDependencies": {
     "babel-core": "^6.26",
     "babel-eslint": "^8.2",
-    "babel-preset-env": "^1.6",
-    "eslint": "^4.18",
+    "babel-preset-env": "^1.7",
+    "eslint": "^4.19",
     "eslint-config-dev": "2.0",
     "pre-commit": "^1.2",
-    "rollup": "^0.56",
+    "rollup": "^0.59",
     "rollup-plugin-babel": "^3.0"
   },
   "eslintConfig": {
