@@ -1,94 +1,90 @@
-# Focus Within [<img src="http://jonathantneal.github.io/dom-logo.svg" alt="dom logo" width="90" height="90" align="right">][Focus Within]
+# Focus Within [<img src="http://jonathantneal.github.io/js-logo.svg" alt="" width="90" height="90" align="right">][Focus Within]
 
 [![NPM Version][npm-img]][npm-url]
 [![Build Status][cli-img]][cli-url]
+[![Support Chat][git-img]][git-url]
 
-[Focus Within] lets you target elements based on whether they are focused or
-contain a focused element, following the [Selectors Level 4] specification.
+[Focus Within] lets you style elements when they are focused or contain a
+focused element, following the [Selectors Level 4] specification.
 
 ```css
-.form-field label {
+.field label {
   /* style a label */
 }
 
-.form-field:focus-within label {
-  /* style a label differently when .form-field contains a focused input */
+.field:focus-within label {
+  /* style a label when its field also contains a focused element */
 }
 ```
-
-[Focus Within] is the companion to [PostCSS Focus Within], which is also
-included [PostCSS Preset Env].
-
-In unsupported browsers, the [Focus Within] polyfill adds a `focus-within`
-attribute to elements otherwise matching `:focus-within` natively.
-[PostCSS Focus Within] will duplicate these rules for you. Otherwise, be sure
-to either duplicate the entire rule, or use the [force option](#options).
-
-```css
-.form-field label {
-  /* style a label */
-}
-
-.form-field[focus-within] label {
-  /* style a label differently when .form-field contains a focused input */
-}
-
-.form-field:focus-within label {
-  /* style a label differently when .form-field contains a focused input */
-}
-```
-
-
-The script, including the test and polyfill minify to 434 bytes gzipped or less.
 
 ## Usage
 
-Add [Focus Within] to your build tool:
+From the command line, transform CSS files that use `:focus-within` selectors:
 
 ```bash
-npm install focus-within
+npx focus-within SOURCE.css TRANSFORMED.css
 ```
 
-Activate [Focus Within] on the `document`:
+Next, use your transformed CSS with this script:
 
-```js
-import focusWithin from 'focus-within';
-
-focusWithin(document);
+```html
+<link rel="stylesheet" href="TRANSFORMED.css">
+<script src="https://unpkg.com/focus-within/browser"></script>
+<script>focusWithin(document)</script>
 ```
 
-## Options
+That’s it. The script is 379 bytes and works in all browsers, including
+Internet Explorer 9.
 
-[Focus Within] accepts a secondary paramater to configure the attribute or
-class name added to elements matching focused elements or containing focused
-elements.
+## How it works
 
-```js
-focusWithin(document, {
-  attr: false,
-  className: '.focus-within'
-});
+The [PostCSS plugin](README-POSTCSS.md) clones rules containing `:focus-within`,
+replacing them with an alternative `[focus-within]` selector.
+
+```css
+.field:focus-within label {
+  font-weight: bold;
+}
+
+/* becomes */
+
+.field[focus-within] label {
+  font-weight: bold;
+}
+
+.field:focus-within label {
+  font-weight: bold;
+}
 ```
 
-Falsey values on either `attr` or `className` will disable setting the
-attribute or class name on elements matching `:focus-within`.
+Next, the [JavaScript library](README-BROWSER.md) adds a `focus-within`
+attribute to elements otherwise matching `:focus-within` natively.
 
-[Focus Within] also accepts a secondary paramater to configure whether the
-polyfill is loaded regardless of support. If `force` is given a truthy value,
-then the polyfill will always execute.
-
-```js
-focusWithin(document, {
-  force: true
-});
+```html
+<html focus-within>
+  <body focus-within>
+    <form focus-within>
+      <div class="field" focus-within>
+        <label for="a">Field</label>
+        <input id="a" value="This element is focused" focus-within>
+      </div>
+      <div class="field">
+        <label for="b">Field</label>
+        <input id="b" value="This element is not focused">
+      </div>
+    </form>
+    <p>Some sibling text element.</p>
+  </body>
+</html>
 ```
 
-[npm-url]: https://www.npmjs.com/package/focus-within
-[npm-img]: https://img.shields.io/npm/v/focus-within.svg
+[cli-img]: https://img.shields.io/travis/jonathantneal/focus-within/master.svg
 [cli-url]: https://travis-ci.org/jonathantneal/focus-within
-[cli-img]: https://img.shields.io/travis/jonathantneal/focus-within.svg
+[git-img]: https://img.shields.io/badge/support-chat-blue.svg
+[git-url]: https://gitter.im/postcss/postcss
+[npm-img]: https://img.shields.io/npm/v/focus-within.svg
+[npm-url]: https://www.npmjs.com/package/focus-within
 
 [Focus Within]: https://github.com/jonathantneal/focus-within
-[PostCSS Focus Within]: https://github.com/jonathantneal/postcss-focus-within
 [PostCSS Preset Env]: https://preset-env.cssdb.org/
 [Selectors Level 4]: https://www.w3.org/TR/selectors-4/#the-focus-within-pseudo

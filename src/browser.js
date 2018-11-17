@@ -1,5 +1,7 @@
 export default function focusWithin(document, opts) {
-	const { className = '', attr = 'focus-within', force } = Object(opts);
+	const className = Object(opts).className;
+	const attr = Object(opts).attr || 'focus-within';
+	const force = Object(opts).force;
 	const lastElements = [];
 
 	try {
@@ -8,7 +10,7 @@ export default function focusWithin(document, opts) {
 		if (!force) {
 			return initialize;
 		}
-	} catch (ignoredError) { /* do nothing */ }
+	} catch (ignoredError) { /* do nothing and continue */ }
 
 	function onfocuschange() {
 		let lastElement;
