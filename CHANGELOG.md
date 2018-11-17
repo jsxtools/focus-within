@@ -1,5 +1,10 @@
 # Changes to Focus Within
 
+### 3.0.0 (November 14, 2018)
+
+- Rewrite the source for optimal browser size
+- Publish a browser-ready version
+
 ### 2.0.0 (June 4, 2018)
 
 - Default polyfill to only execute in unsupported browsers

@@ -1,5 +1,10 @@
 node_modules
-index.*.js
+/browser.js*
+/cli.js*
+/index.js*
+/index.mjs*
+/postcss.js*
+/postcss.mjs*
 package-lock.json
 *.log*
 *.result.css
