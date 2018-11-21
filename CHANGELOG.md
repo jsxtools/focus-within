@@ -1,5 +1,10 @@
 # Changes to Focus Within
 
+### 3.0.1 (November 21, 2018)
+
+- Fix an issue with the main module not being published
+- Update `postcss` to 7.0.6 (patch)
+
 ### 3.0.0 (November 14, 2018)
 
 - Rewrite the source for optimal browser size

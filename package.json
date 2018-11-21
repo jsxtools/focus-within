@@ -1,6 +1,6 @@
 {
   "name": "focus-within",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Style elements when they are focused or contain a focused element",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -41,7 +41,7 @@
     "node": ">=6.0.0"
   },
   "dependencies": {
-    "postcss": "^7.0.5"
+    "postcss": "^7.0.6"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
