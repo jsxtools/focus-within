@@ -38,8 +38,8 @@ Internet Explorer 9.
 
 ## How it works
 
-The [PostCSS plugin](README-POSTCSS.md) clones rules containing `:focus-within`,
-replacing them with an alternative `[focus-within]` selector.
+The [PostCSS plugin](README-POSTCSS.md) duplicates rules containing
+`:focus-within`, replacing them with an alternative `[focus-within]` selector.
 
 ```css
 .field:focus-within label {
@@ -77,6 +77,15 @@ attribute to elements otherwise matching `:focus-within` natively.
   </body>
 </html>
 ```
+
+> **GOTCHA!**
+>
+> One cannot simply add the `[focus-within]` selector to an existing rule:
+> ```css
+> .field:focus-within label, .field[focus-within] label {}
+> ```
+> Browsers that don't support `:focus-within` will throw the entire rule away!
+> This is why you should follow the [Usage](#usage) instructions.
 
 [cli-img]: https://img.shields.io/travis/jonathantneal/focus-within/master.svg
 [cli-url]: https://travis-ci.org/jonathantneal/focus-within

@@ -1,5 +1,10 @@
 # Changes to Focus Within
 
+### 3.0.2 (November 23, 2018)
+
+- Improve CLI usage
+- Futher improve documentation
+
 ### 3.0.1 (November 21, 2018)
 
 - Fix an issue with the main module not being published

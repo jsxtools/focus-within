@@ -17,7 +17,7 @@ if (process.argv.length < 3) {
 const fileRegExp = /^[\w\/.]+$/;
 const argRegExp = /^--(\w+)=("|')?(.+)\2$/;
 const relaxedJsonPropRegExp = /(['"])?([a-z0-9A-Z_]+)(['"])?:/g;
-const relaxedJsonValueRegExp = /("[a-z0-9A-Z_]+":\s*)'?([A-z0-9]+)'?([,}])/g;
+const relaxedJsonValueRegExp = /("[a-z0-9A-Z_]+":\s*)(?!true|false|null|\d+)'?([A-z0-9]+)'?([,}])/g;
 const argo = process.argv.slice(2).reduce(
 	(object, arg) => {
 		const argMatch = arg.match(argRegExp);

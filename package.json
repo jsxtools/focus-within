@@ -1,6 +1,6 @@
 {
   "name": "focus-within",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Style elements when they are focused or contain a focused element",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
