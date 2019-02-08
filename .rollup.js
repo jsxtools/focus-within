@@ -10,7 +10,7 @@ const input = `src/${isCLI ? 'cli' : isPostCSS ? 'postcss' : 'browser'}.js`;
 const output = isCLI
 	? { file: 'cli.js', format: 'cjs' }
 : isBrowser
-	? { file: 'browser.js', format: 'cjs' }
+	? { file: 'browser.js', format: 'umd', name: 'focusWithin' }
 : isPostCSS
 	? [
 	{ file: 'postcss.js', format: 'cjs', sourcemap: true },
@@ -27,7 +27,6 @@ const plugins = [
 	})
 ].concat(isBrowser
 	? [
-		trimContentForBrowser(),
 		terser()
 	]
 : isCLI
